@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniorCare | Preventive Health for Independent Living</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <nav class="p-6 bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span class="text-2xl font-bold text-teal-700">SeniorCare AI</span>
+            <a href="#contact" class="bg-teal-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-700 transition">Pitch Deck</a>
+        </div>
+    </nav>
+
+    <header class="py-20 px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6">Empowering Independence Through Preventive Care.</h1>
+            <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed">
+                Advanced AI diagnostics designed specifically for self-dependent seniors to prevent complications before they start.
+            </p>
+            <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <img src="marketing-image.jpg" alt="Senior citizen using health device" class="w-full h-auto bg-slate-200">
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-teal-800 mb-8 border-l-8 border-teal-500 pl-4">The Challenge</h2>
+            <p class="text-2xl text-slate-700 font-medium">
+                Millions of seniors live without primary caretakers. Current healthcare is reactive—treating issues only after they become emergencies. 
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-slate-100">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-teal-800 mb-6">Our Solution</h2>
+                <ul class="space-y-6 text-xl">
+                    <li class="flex items-start">
+                        <span class="text-teal-600 mr-3 text-2xl">✔</span>
+                        <span><strong>Early Diagnosis:</strong> Continuous monitoring that flags complications early.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-teal-600 mr-3 text-2xl">✔</span>
+                        <span><strong>Senior-First UX:</strong> High-contrast, voice-enabled, and zero-friction interface.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-teal-600 mr-3 text-2xl">✔</span>
+                        <span><strong>Independence:</strong> Tools designed for users without live-in assistance.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-teal-700 h-64 rounded-3xl flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                [Product Demo Visual Here]
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 text-center bg-teal-900 text-white">
+        <h2 class="text-4xl font-bold mb-6">Ready to Transform Senior Healthcare?</h2>
+        <p class="text-xl text-teal-100 mb-10 max-w-2xl mx-auto">
+            Join us in building the future of preventive aging. View our full financial projections and roadmap.
+        </p>
+        <button class="bg-white text-teal-900 text-xl font-bold py-4 px-12 rounded-full hover:bg-teal-50 transition transform hover:scale-105">
+            Contact for Investment
+        </button>
+    </section>
+
+    <footer class="py-10 text-center text-slate-500 border-t border-slate-200">
+        <p>&copy; 2026 SeniorCare AI. Built with Vibe Coding.</p>
+    </footer>
+
+</body>
+</html>
