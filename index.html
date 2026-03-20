@@ -1,83 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeniorCare | Preventive Health for Independent Living</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraHome — Your Health, In Focus.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage:  { 50:'#f4f7f4', 100:'#e6ede6', 200:'#ccdccc', 300:'#a4c1a4', 400:'#74a074', 500:'#4e7f4e', 600:'#3d643d' },
+            slate: { 850:'#1a2433' },
+            cream: { DEFAULT:'#faf8f3' },
+            gold:  { light:'#e8d5a3', DEFAULT:'#c9a84c', deep:'#9a7a2e' },
+            aura:  { DEFAULT:'#7b9eb8', light:'#d4e5f0', dark:'#3d6b8a' },
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --sage-300:#a4c1a4; --sage-500:#4e7f4e; --cream:#faf8f3;
+      --gold:#c9a84c; --aura:#7b9eb8; --aura-light:#d4e5f0; --aura-dark:#3d6b8a; --ink:#1a2433;
+    }
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+
+    body::before{
+      content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    }
+    .section{position:relative;z-index:1;}
+    nav{backdrop-filter:blur(14px);background:rgba(250,248,243,0.88);}
+
+    .hero-photo{
+      position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
+      background:url('hero-bg.jpg') center center / cover no-repeat;
+    }
+    .hero-photo::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to right,rgba(26,36,51,0.82) 0%,rgba(26,36,51,0.55) 45%,rgba(26,36,51,0.15) 75%,transparent 100%);
+    }
+    .hero-photo::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to top, rgba(26,36,51,0.6) 0%, transparent 50%);
+    }
+
+    .stat-card{background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);border:1px solid rgba(164,193,164,0.35);transition:transform .3s,box-shadow .3s;}
+    .stat-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(78,127,78,0.12);}
+    .problem-card{background:rgba(255,255,255,0.55);border:1px solid rgba(201,168,76,0.22);transition:transform .3s,box-shadow .3s;}
+    .problem-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,36,51,0.08);}
+    .feature-card{background:rgba(255,255,255,0.7);border:1px solid rgba(164,193,164,0.3);transition:transform .3s,box-shadow .3s;}
+    .feature-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(78,127,78,0.1);}
+
+    .step-number{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:4rem;line-height:1;color:rgba(78,127,78,0.15);}
+    .serif-divider{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--sage-300);letter-spacing:.04em;}
+    .cta-bg{background:linear-gradient(135deg,#1a2433 0%,#1e2f3d 45%,#1a2e1e 100%);}
+
+    .btn-gold{
+      background:linear-gradient(135deg,var(--gold) 0%,#e8d5a3 50%,var(--gold) 100%);
+      background-size:200% 200%;color:#1a2433;font-weight:600;
+      letter-spacing:.06em;text-transform:uppercase;font-size:.85rem;
+      transition:background-position .4s,transform .2s,box-shadow .3s;
+      box-shadow:0 4px 20px rgba(201,168,76,.4);
+    }
+    .btn-gold:hover{background-position:right center;transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.55);}
+
+    .btn-white{
+      background:rgba(255,255,255,0.95);color:#1a2433;font-weight:700;
+      letter-spacing:.08em;text-transform:uppercase;font-size:1rem;
+      transition:transform .2s,box-shadow .3s,background .2s;
+      box-shadow:0 4px 20px rgba(0,0,0,.2);
+    }
+    .btn-white:hover{background:#ffffff;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3);}
+
+    .fade-up{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+    .deco-line{height:1px;background:linear-gradient(90deg,transparent,var(--sage-300),transparent);}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+    .ticker-track{display:flex;gap:3rem;animation:ticker 32s linear infinite;white-space:nowrap;}
+    @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    .node-dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 4px rgba(123,158,184,0.18);animation:nodePulse 2.5s ease-in-out infinite;flex-shrink:0;}
+    .node-line{flex:1;height:1px;background:linear-gradient(90deg,var(--aura-light),rgba(123,158,184,.25));}
+    @keyframes nodePulse{0%,100%{transform:scale(1);opacity:.7;box-shadow:0 0 0 0 rgba(123,158,184,.4);}50%{transform:scale(1.35);opacity:1;box-shadow:0 0 0 8px rgba(123,158,184,0);}}
+
+    .compass-band{width:80px;height:110px;border-radius:24px;background:linear-gradient(160deg,#2a3d4f,#1a2433);border:2px solid rgba(123,158,184,0.4);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(26,36,51,0.3);position:relative;overflow:hidden;}
+    .compass-btn{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#e8d5a3);box-shadow:0 0 0 6px rgba(201,168,76,0.2);animation:btnGlow 2.5s ease-in-out infinite alternate;}
+    @keyframes btnGlow{0%{box-shadow:0 0 0 6px rgba(201,168,76,0.2);}100%{box-shadow:0 0 0 10px rgba(201,168,76,0.08);}}
+    .haptic-wave{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.3);animation:hapticExpand 2s ease-out infinite;}
+    @keyframes hapticExpand{0%{width:28px;height:28px;opacity:.8;}100%{width:90px;height:90px;opacity:0;}}
+
+    .eco-ring{position:absolute;border-radius:50%;border:1px dashed rgba(123,158,184,0.25);animation:rotateRing 30s linear infinite;}
+    @keyframes rotateRing{to{transform:rotate(360deg);}}
+    .eco-node{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);border:1.5px solid rgba(123,158,184,0.4);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(26,36,51,0.1);animation:nodePop 3s ease-in-out infinite alternate;}
+    @keyframes nodePop{0%{transform:scale(1);}100%{transform:scale(1.08);box-shadow:0 6px 24px rgba(123,158,184,0.25);}}
+    .eco-center{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,rgba(212,229,240,0.8),rgba(164,193,164,0.35));border:2px solid rgba(123,158,184,0.5);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(123,158,184,0.07),0 0 0 24px rgba(123,158,184,0.03),0 20px 60px rgba(26,36,51,0.14);animation:centerPulse 5s ease-in-out infinite alternate;}
+    @keyframes centerPulse{0%{box-shadow:0 0 0 12px rgba(123,158,184,0.07),0 0 0 24px rgba(123,158,184,0.03),0 20px 60px rgba(26,36,51,0.14);}100%{box-shadow:0 0 0 18px rgba(123,158,184,0.12),0 0 0 34px rgba(78,127,78,0.05),0 28px 80px rgba(26,36,51,0.18);}}
+
+    .compare-yes{color:#4e7f4e;font-weight:600;}
+    .compare-no{color:#a0a0a0;}
+    .adopter-bg{background:linear-gradient(135deg,rgba(78,127,78,0.12) 0%,rgba(123,158,184,0.1) 100%);border:1px solid rgba(164,193,164,0.4);}
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 leading-relaxed">
+<body>
 
-    <nav class="p-6 bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <span class="text-2xl font-bold text-teal-700">SeniorCare AI</span>
-            <a href="#contact" class="bg-teal-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-700 transition">Pitch Deck</a>
-        </div>
-    </nav>
-
-    <header class="py-20 px-6 bg-gradient-to-b from-teal-50 to-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6">Empowering Independence Through Preventive Care.</h1>
-            <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed">
-                Advanced AI diagnostics designed specifically for self-dependent seniors to prevent complications before they start.
-            </p>
-            <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                <img src="marketing-image.jpg" alt="Senior citizen using health device" class="w-full h-auto bg-slate-200">
-            </div>
-        </div>
-    </header>
-
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-teal-800 mb-8 border-l-8 border-teal-500 pl-4">The Challenge</h2>
-            <p class="text-2xl text-slate-700 font-medium">
-                Millions of seniors live without primary caretakers. Current healthcare is reactive—treating issues only after they become emergencies. 
-            </p>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-slate-100">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-3xl font-bold text-teal-800 mb-6">Our Solution</h2>
-                <ul class="space-y-6 text-xl">
-                    <li class="flex items-start">
-                        <span class="text-teal-600 mr-3 text-2xl">✔</span>
-                        <span><strong>Early Diagnosis:</strong> Continuous monitoring that flags complications early.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-teal-600 mr-3 text-2xl">✔</span>
-                        <span><strong>Senior-First UX:</strong> High-contrast, voice-enabled, and zero-friction interface.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-teal-600 mr-3 text-2xl">✔</span>
-                        <span><strong>Independence:</strong> Tools designed for users without live-in assistance.</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="bg-teal-700 h-64 rounded-3xl flex items-center justify-center text-white text-xl font-bold shadow-lg">
-                [Product Demo Visual Here]
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-6 text-center bg-teal-900 text-white">
-        <h2 class="text-4xl font-bold mb-6">Ready to Transform Senior Healthcare?</h2>
-        <p class="text-xl text-teal-100 mb-10 max-w-2xl mx-auto">
-            Join us in building the future of preventive aging. View our full financial projections and roadmap.
-        </p>
-        <button class="bg-white text-teal-900 text-xl font-bold py-4 px-12 rounded-full hover:bg-teal-50 transition transform hover:scale-105">
-            Contact for Investment
-        </button>
-    </section>
-
-    <footer class="py-10 text-center text-slate-500 border-t border-slate-200">
-        <p>&copy; 2026 SeniorCare AI. Built with Vibe Coding.</p>
-    </footer>
-
-</body>
-</html>
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-sage-100">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <span class="font-display text-2xl font-semibold text-slate-850 tracking-tight">
+      Aura<span style="color:var(--aura-dark)">Home</span><span class="text-gold">.</span>
+    </span>
+    <div class="flex items-center gap-3">
+      <a href="#early-adopter" class="border-2 border-sage-300 text-sage-600 font-semibold px-4 py-2 rounded-full text-sm hover:bg-sage-50 transition-colors hidden sm:block">Earl
