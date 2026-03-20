@@ -43,21 +43,34 @@
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
     }
     .section{position:relative;z-index:1;}
-    nav{backdrop-filter:blur(14px);background:rgba(250,248,243,0.88);}
+    nav{backdrop-filter:blur(14px);background:rgba(26,36,51,0.85);}
 
-    .hero-photo{
+    /* ── Hero ── */
+    .hero-bg{
       position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
-      background:url('hero-bg.jpg') center center / cover no-repeat;
-    }
-    .hero-photo::before{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(to right,rgba(26,36,51,0.82) 0%,rgba(26,36,51,0.55) 45%,rgba(26,36,51,0.15) 75%,transparent 100%);
-    }
-    .hero-photo::after{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(to top, rgba(26,36,51,0.6) 0%, transparent 50%);
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(61,107,138,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 0% 100%, rgba(78,127,78,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, #1a2433 0%, #1e2f3d 50%, #1a2e1e 100%);
     }
 
+    /* Animated particles */
+    .hero-bg::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        radial-gradient(circle 1.5px at 20% 30%, rgba(123,158,184,0.6) 0%, transparent 100%),
+        radial-gradient(circle 1px at 75% 20%, rgba(201,168,76,0.5) 0%, transparent 100%),
+        radial-gradient(circle 2px at 55% 65%, rgba(123,158,184,0.4) 0%, transparent 100%),
+        radial-gradient(circle 1px at 35% 80%, rgba(164,193,164,0.5) 0%, transparent 100%),
+        radial-gradient(circle 1.5px at 85% 55%, rgba(201,168,76,0.4) 0%, transparent 100%),
+        radial-gradient(circle 1px at 10% 60%, rgba(123,158,184,0.5) 0%, transparent 100%),
+        radial-gradient(circle 2px at 90% 85%, rgba(164,193,164,0.3) 0%, transparent 100%),
+        radial-gradient(circle 1px at 65% 40%, rgba(201,168,76,0.35) 0%, transparent 100%);
+      pointer-events:none;
+    }
+
+    /* ── Cards ── */
     .stat-card{background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);border:1px solid rgba(164,193,164,0.35);transition:transform .3s,box-shadow .3s;}
     .stat-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(78,127,78,0.12);}
     .problem-card{background:rgba(255,255,255,0.55);border:1px solid rgba(201,168,76,0.22);transition:transform .3s,box-shadow .3s;}
@@ -79,12 +92,12 @@
     .btn-gold:hover{background-position:right center;transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.55);}
 
     .btn-white{
-      background:rgba(255,255,255,0.95);color:#1a2433;font-weight:700;
+      background:rgba(255,255,255,0.12);color:#ffffff;font-weight:700;
       letter-spacing:.08em;text-transform:uppercase;font-size:1rem;
+      border:2px solid rgba(255,255,255,0.4);
       transition:transform .2s,box-shadow .3s,background .2s;
-      box-shadow:0 4px 20px rgba(0,0,0,.2);
     }
-    .btn-white:hover{background:#ffffff;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3);}
+    .btn-white:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px);}
 
     .fade-up{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
     .fade-up.visible{opacity:1;transform:translateY(0);}
@@ -119,10 +132,418 @@
 <body>
 
 <!-- NAV -->
-<nav class="fixed top-0 inset-x-0 z-50 border-b border-sage-100">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/10">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <span class="font-display text-2xl font-semibold text-slate-850 tracking-tight">
-      Aura<span style="color:var(--aura-dark)">Home</span><span class="text-gold">.</span>
+    <span class="font-display text-2xl font-semibold text-white tracking-tight">
+      Aura<span style="color:var(--aura)">Home</span><span class="text-gold">.</span>
     </span>
     <div class="flex items-center gap-3">
-      <a href="#early-adopter" class="border-2 border-sage-300 text-sage-600 font-semibold px-4 py-2 rounded-full text-sm hover:bg-sage-50 transition-colors hidden sm:block">Earl
+      <a href="#early-adopter" class="border border-white/30 text-white/80 font-semibold px-4 py-2 rounded-full text-sm hover:bg-white/10 transition-colors hidden sm:block">Early Adopter</a>
+      <a href="#contact" class="btn-gold px-5 py-2 rounded-full text-sm">Invest with Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg section pt-16">
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pb-20 pt-32 grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- Left: Text -->
+    <div class="fade-up">
+      <p class="font-display italic text-lg mb-5" style="color:rgba(164,193,164,0.85)">Ambient Health Ecosystem · Seed Round</p>
+      <h1 class="font-display font-semibold text-white leading-[1.05] mb-6" style="font-size:clamp(3rem,7vw,5.5rem)">
+        Your Health,<br/><em class="text-gold">In Focus.</em>
+      </h1>
+      <p class="font-body text-white/80 leading-relaxed mb-4" style="font-size:clamp(1.1rem,2vw,1.35rem)">
+        Dedicated to Independent Living.<br/>Proactive Monitoring. Preventive Care.
+      </p>
+      <p class="font-body text-white/60 text-lg leading-relaxed mb-10 max-w-lg">
+        True independence means managing your health on your own terms. You don't need a caretaker — you just need the right tools.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#early-adopter" class="btn-gold px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
+          Secure Your Health
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="#solution" class="btn-white px-8 py-4 rounded-full text-base">See How It Works</a>
+      </div>
+    </div>
+
+    <!-- Right: Ecosystem visual -->
+    <div class="fade-up flex items-center justify-center" style="transition-delay:.15s">
+      <div class="relative w-72 h-72 flex items-center justify-center">
+        <div class="eco-ring" style="width:270px;height:270px;inset:0;margin:auto;animation-duration:40s;animation-direction:reverse;"></div>
+        <div class="eco-ring" style="width:190px;height:190px;inset:0;margin:auto;animation-duration:25s;"></div>
+        <div class="eco-center z-10">
+          <div class="text-center">
+            <svg class="w-9 h-9 mx-auto mb-1" style="color:var(--aura-dark)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            <p class="font-display text-sm font-semibold text-slate-850">AuraHome</p>
+          </div>
+        </div>
+        <div class="eco-node z-10" style="top:6%;left:50%;transform:translateX(-50%);animation-delay:.2s;">
+          <svg class="w-5 h-5 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v.375c0 .621.504 1.125 1.125 1.125z"/></svg>
+        </div>
+        <div class="eco-node z-10" style="top:50%;right:2%;transform:translateY(-50%);animation-delay:.5s;">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-1.5-.75m12-9.75V12"/></svg>
+        </div>
+        <div class="eco-node z-10" style="bottom:6%;left:50%;transform:translateX(-50%);animation-delay:.9s;">
+          <svg class="w-5 h-5" style="color:var(--aura-dark)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+        </div>
+        <div class="eco-node z-10" style="top:50%;left:2%;transform:translateY(-50%);animation-delay:1.3s;">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat strip -->
+  <div class="relative z-10 w-full" style="background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.08)">
+    <div class="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div><p class="font-display text-3xl font-bold text-gold">1.4B</p><p class="font-body text-white/60 text-sm mt-0.5">seniors globally by 2030</p></div>
+      <div><p class="font-display text-3xl font-bold text-white">24/7</p><p class="font-body text-white/60 text-sm mt-0.5">whole-home coverage</p></div>
+      <div><p class="font-display text-3xl font-bold text-gold">3.2×</p><p class="font-body text-white/60 text-sm mt-0.5">insurer ROI on prevention</p></div>
+      <div><p class="font-display text-3xl font-bold text-white">$2.1T</p><p class="font-body text-white/60 text-sm mt-0.5">global senior care market</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<section class="section py-6 px-6 overflow-hidden" style="background:var(--aura-dark)">
+  <div class="overflow-hidden">
+    <div class="ticker-track font-body text-white/70 text-sm font-medium">
+      <span>❤️ Real-Time Vitals</span><span class="text-gold/60 mx-2">✦</span>
+      <span>💊 Medication Management</span><span class="text-gold/60 mx-2">✦</span>
+      <span>📊 Health Dashboard</span><span class="text-gold/60 mx-2">✦</span>
+      <span>🛡️ mmWave Radar · No Cameras</span><span class="text-gold/60 mx-2">✦</span>
+      <span>🏠 Guardian Nodes in Every Room</span><span class="text-gold/60 mx-2">✦</span>
+      <span>👤 Human-in-the-Loop Safety Net</span><span class="text-gold/60 mx-2">✦</span>
+      <span>📱 4G/5G eSIM Resilience</span><span class="text-gold/60 mx-2">✦</span>
+      <span>❤️ Real-Time Vitals</span><span class="text-gold/60 mx-2">✦</span>
+      <span>💊 Medication Management</span><span class="text-gold/60 mx-2">✦</span>
+      <span>📊 Health Dashboard</span><span class="text-gold/60 mx-2">✦</span>
+      <span>🛡️ mmWave Radar · No Cameras</span><span class="text-gold/60 mx-2">✦</span>
+      <span>🏠 Guardian Nodes in Every Room</span><span class="text-gold/60 mx-2">✦</span>
+      <span>👤 Human-in-the-Loop Safety Net</span><span class="text-gold/60 mx-2">✦</span>
+      <span>📱 4G/5G eSIM Resilience</span><span class="text-gold/60 mx-2">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- EARLY ADOPTER -->
+<section id="early-adopter" class="section py-24 px-6" style="background:var(--cream)">
+  <div class="max-w-5xl mx-auto">
+    <div class="fade-up adopter-bg rounded-3xl px-8 md:px-14 py-14">
+      <div class="text-center mb-12">
+        <p class="serif-divider text-lg mb-3">For Early Adopters</p>
+        <h2 class="font-display text-5xl lg:text-6xl font-semibold text-slate-850 mb-5">
+          Love your home?<br/><em class="text-sage-500">Let it look after you.</em>
+        </h2>
+        <p class="font-body text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          We're looking for our first <strong class="text-slate-850">100 Early Adopters</strong> to help us redefine ageing in place. Proactive care without the intrusion — you stay in control, while AuraHome quietly works in the background.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mb-14">
+        <div class="feature-card rounded-2xl p-7 text-center">
+          <div class="text-4xl mb-3">❤️</div>
+          <h3 class="font-display text-2xl font-semibold text-slate-850 mb-2">Real-Time Vitals</h3>
+          <p class="font-body text-lg text-slate-600 leading-relaxed">Track your heart rate and activity at a glance — on a display designed for you, not against you.</p>
+        </div>
+        <div class="feature-card rounded-2xl p-7 text-center">
+          <div class="text-4xl mb-3">💊</div>
+          <h3 class="font-display text-2xl font-semibold text-slate-850 mb-2">Medication Management</h3>
+          <p class="font-body text-lg text-slate-600 leading-relaxed">Simple, on-screen reminders with voice confirmation keep you perfectly on schedule, every single day.</p>
+        </div>
+        <div class="feature-card rounded-2xl p-7 text-center">
+          <div class="text-4xl mb-3">📊</div>
+          <h3 class="font-display text-2xl font-semibold text-slate-850 mb-2">Health Dashboard</h3>
+          <p class="font-body text-lg text-slate-600 leading-relaxed">A clear, visual guide to your daily wellness goals — completely under your control, beautifully presented.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div class="rounded-2xl p-8 text-center" style="background:rgba(255,255,255,0.6);border:1px solid rgba(164,193,164,0.4)">
+          <p class="font-body text-slate-400 text-sm uppercase tracking-widest mb-2">Regular Pricing</p>
+          <p class="font-display text-5xl font-bold text-slate-400 line-through">$299</p>
+          <p class="font-body text-slate-400 text-base mt-1">per year</p>
+        </div>
+        <div class="rounded-2xl p-8 text-center relative overflow-hidden" style="background:linear-gradient(135deg,rgba(78,127,78,0.1),rgba(123,158,184,0.1));border:2px solid rgba(78,127,78,0.4)">
+          <div class="absolute top-4 right-4 bg-sage-500 text-white text-xs font-bold px-3 py-1 rounded-full font-body uppercase tracking-wide">Early Adopter</div>
+          <p class="font-body text-sage-600 text-sm uppercase tracking-widest mb-2">Your Price</p>
+          <p class="font-display text-5xl font-bold text-sage-500">$199</p>
+          <p class="font-body text-sage-400 text-base mt-1">per year</p>
+          <div class="mt-4 space-y-1 text-sm text-slate-600 font-body">
+            <p>✓ Priority support included</p>
+            <p>✓ 30-day risk-free trial</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="#contact" class="btn-gold px-10 py-5 rounded-full text-lg inline-flex items-center gap-3">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          Join the Early Adopter Waitlist
+        </a>
+        <p class="font-body text-slate-400 text-sm mt-4">Only 100 spots available · Launch pricing locked at signup</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="section py-28 px-6 bg-gradient-to-b from-cream to-sage-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="fade-up text-center mb-16">
+      <p class="serif-divider text-lg mb-3">The Challenge</p>
+      <h2 class="font-display text-5xl lg:text-6xl font-semibold text-slate-850 mb-6">
+        A world ageing faster<br/>than <em class="text-sage-500">care can scale.</em>
+      </h2>
+      <p class="font-body text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        By 2050 there will be more people over 60 than under 15 for the first time in human history. The majority will live alone — without a caretaker, and far from specialist care.
+      </p>
+    </div>
+    <div class="fade-up grid grid-cols-2 md:grid-cols-4 gap-5 mb-14">
+      <div class="problem-card rounded-2xl p-6 text-center">
+        <p class="font-display text-4xl font-bold" style="color:var(--aura-dark)">1.4B</p>
+        <p class="font-body text-slate-600 mt-2 text-base leading-snug">people aged 60+ globally by 2030 <span class="text-slate-400 text-sm">(WHO)</span></p>
+      </div>
+      <div class="problem-card rounded-2xl p-6 text-center">
+        <p class="font-display text-4xl font-bold text-gold">$47T</p>
+        <p class="font-body text-slate-600 mt-2 text-base leading-snug">global cost of chronic disease by 2030 <span class="text-slate-400 text-sm">(WEF)</span></p>
+      </div>
+      <div class="problem-card rounded-2xl p-6 text-center">
+        <p class="font-display text-4xl font-bold text-sage-500">50%</p>
+        <p class="font-body text-slate-600 mt-2 text-base leading-snug">of seniors miss medications, causing 125K deaths/yr <span class="text-slate-400 text-sm">(NEJM)</span></p>
+      </div>
+      <div class="problem-card rounded-2xl p-6 text-center">
+        <p class="font-display text-4xl font-bold" style="color:var(--aura-dark)">77%</p>
+        <p class="font-body text-slate-600 mt-2 text-base leading-snug">of global deaths from preventable conditions <span class="text-slate-400 text-sm">(CDC)</span></p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="problem-card fade-up rounded-3xl p-8">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:var(--aura-light)">
+          <svg class="w-7 h-7" style="color:var(--aura-dark)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-slate-850 mb-3">Invisible Decline</h3>
+        <p class="font-body text-lg text-slate-600 leading-relaxed">Hypertension, diabetes, and early cognitive decline develop silently. There is <strong style="color:var(--aura-dark)">no daily signal</strong> until a hospitalisation forces the issue.</p>
+      </div>
+      <div class="problem-card fade-up rounded-3xl p-8" style="transition-delay:.1s">
+        <div class="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-slate-850 mb-3">No Caretaker, No Safety Net</h3>
+        <p class="font-body text-lg text-slate-600 leading-relaxed">89% of seniors want to age at home (AARP) — but most live alone. A fall at 2 AM, a missed medication: <strong class="text-amber-600">there is nobody to notice.</strong></p>
+      </div>
+      <div class="problem-card fade-up rounded-3xl p-8" style="transition-delay:.2s">
+        <div class="w-14 h-14 rounded-2xl bg-sage-100 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3"/></svg>
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-slate-850 mb-3">Tech That Demands Effort</h3>
+        <p class="font-body text-lg text-slate-600 leading-relaxed">Existing solutions require <strong class="text-sage-500">constant, conscious effort.</strong> Non-adherence rates exceed 70% within 6 months (JMIR). AuraHome asks nothing — it just watches.</p>
+      </div>
+    </div>
+    <div class="fade-up mt-20 rounded-3xl border border-sage-200 bg-white/50 px-10 py-12 text-center">
+      <p class="font-display text-3xl lg:text-4xl italic text-slate-700 leading-snug max-w-3xl mx-auto">
+        "For a senior living alone, healthcare must be omnipresent — but invisible. AuraHome is the system that was never there, until the moment it needs to be."
+      </p>
+      <p class="font-body text-sage-400 mt-5 text-lg">— AuraHome Founding Team</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution" class="section py-28 px-6 bg-sage-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="fade-up text-center mb-20">
+      <p class="serif-divider text-lg mb-3">The AuraHome Ecosystem</p>
+      <h2 class="font-display text-5xl lg:text-6xl font-semibold text-slate-850 mb-6">
+        Three layers.<br/><em style="color:var(--aura-dark)">One</em> seamless <em class="text-gold">safety net.</em>
+      </h2>
+      <p class="font-body text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        AuraHome is not a single device — it is a decentralised ecosystem of hardware, AI, and human professionals designed for seniors with no caretaker.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Step 1 -->
+      <div class="fade-up grid lg:grid-cols-12 gap-8 items-center bg-white/70 border rounded-3xl p-10" style="border-color:var(--aura-light)">
+        <div class="lg:col-span-2"><span class="step-number">01</span></div>
+        <div class="lg:col-span-6">
+          <p class="font-body text-sm font-semibold uppercase tracking-widest mb-2" style="color:var(--aura-dark)">Hardware Layer</p>
+          <h3 class="font-display text-3xl font-semibold text-slate-850 mb-3">Guardian Nodes</h3>
+          <p class="font-body text-xl text-slate-600 leading-relaxed mb-4">3–4 discreet nodes — the size of a smoke detector — in the bathroom, bedroom, kitchen, and living room. They use <strong style="color:var(--aura-dark)">mmWave Radar</strong> instead of cameras: radio frequency that sees through steam and darkness, measures heart rate and respiration, and detects falls anywhere in the room.</p>
+          <p class="font-body text-base text-slate-500">No images captured. No intrusive cameras. Seniors retain full dignity.</p>
+        </div>
+        <div class="lg:col-span-4 flex justify-end">
+          <div class="bg-white/80 rounded-2xl p-5 w-full max-w-xs" style="border:1px solid var(--aura-light)">
+            <p class="font-body text-xs text-slate-400 uppercase tracking-widest mb-4">Live Node Coverage</p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3"><div class="node-dot" style="background:var(--aura);animation-delay:0s;"></div><div class="node-line"></div><span class="font-body text-sm text-slate-600">Bathroom Node</span></div>
+              <div class="flex items-center gap-3"><div class="node-dot" style="background:var(--sage-500);animation-delay:.7s;"></div><div class="node-line" style="background:linear-gradient(90deg,#ccdccc,rgba(164,193,164,.25));"></div><span class="font-body text-sm text-slate-600">Bedroom Node</span></div>
+              <div class="flex items-center gap-3"><div class="node-dot" style="background:var(--gold);animation-delay:1.4s;"></div><div class="node-line" style="background:linear-gradient(90deg,#e8d5a3,rgba(201,168,76,.2));"></div><span class="font-body text-sm text-slate-600">Kitchen Node</span></div>
+              <div class="flex items-center gap-3"><div class="node-dot" style="background:var(--aura-dark);animation-delay:2s;"></div><div class="node-line"></div><span class="font-body text-sm text-slate-600">Living Room Node</span></div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-sage-100 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sage-400 flex-shrink-0"></span>
+              <p class="font-body text-xs text-sage-500">4G/5G eSIM backup · 24h battery</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="fade-up grid lg:grid-cols-12 gap-8 items-center bg-white/70 border border-sage-200 rounded-3xl p-10" style="transition-delay:.1s">
+        <div class="lg:col-span-2"><span class="step-number">02</span></div>
+        <div class="lg:col-span-6">
+          <p class="font-body text-sm font-semibold uppercase tracking-widest mb-2 text-sage-500">Interaction Layer</p>
+          <h3 class="font-display text-3xl font-semibold text-slate-850 mb-3">The Compass &amp; The Mirror</h3>
+          <p class="font-body text-xl text-slate-600 leading-relaxed mb-4"><strong class="text-slate-700">The Compass</strong> — a screen-less wristband with a single button — delivers gentle haptic nudges for medication reminders. One press connects the senior to a live 24/7 human medical concierge, not a robot.</p>
+          <p class="font-body text-base text-slate-500 leading-relaxed"><strong class="text-slate-600">The Mirror Hub</strong> handles high-detail tasks: pill recognition, guided physiotherapy, and displaying AI-scheduled doctor appointments on a beautifully legible screen.</p>
+        </div>
+        <div class="lg:col-span-4 flex justify-end items-center gap-6">
+          <div class="flex flex-col items-center gap-2">
+            <div class="compass-band">
+              <div class="haptic-wave" style="animation-delay:0s;"></div>
+              <div class="haptic-wave" style="animation-delay:.8s;"></div>
+              <div class="compass-btn"></div>
+            </div>
+            <p class="font-body text-xs text-slate-500">The Compass</p>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-16 h-24 rounded-xl border-2 flex items-center justify-center shadow-lg" style="border-color:rgba(123,158,184,0.4);background:linear-gradient(to bottom,var(--aura-light),rgba(255,255,255,0.85))">
+              <div class="text-center px-1">
+                <p class="font-display text-xs font-bold text-slate-700">2 PM</p>
+                <p class="font-body text-slate-500 leading-tight" style="font-size:0.55rem">Dr. Mehta<br/>available</p>
+              </div>
+            </div>
+            <p class="font-body text-xs text-slate-500">The Mirror</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="fade-up grid lg:grid-cols-12 gap-8 items-center bg-white/70 border border-gold/20 rounded-3xl p-10" style="transition-delay:.2s">
+        <div class="lg:col-span-2"><span class="step-number">03</span></div>
+        <div class="lg:col-span-6">
+          <p class="font-body text-sm font-semibold uppercase tracking-widest mb-2 text-gold-deep">Intelligence Layer</p>
+          <h3 class="font-display text-3xl font-semibold text-slate-850 mb-3">Predictive AI &amp; Human-in-the-Loop</h3>
+          <p class="font-body text-xl text-slate-600 leading-relaxed mb-4">The AI builds a "Normal" baseline for each senior. Any deviation triggers a graded response:</p>
+          <ul class="font-body text-lg text-slate-600 space-y-3">
+            <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background:var(--aura)"></span><span><strong class="text-slate-700">Gentle check-in:</strong> "Hi Mary, you're sleeping in — are you feeling okay today?"</span></li>
+            <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-gold"></span><span><strong class="text-slate-700">Auto-scheduled GP:</strong> "Your heart rate has been elevated 48 hrs. Dr. Mehta is free at 2 PM — shall I confirm?"</span></li>
+            <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-red-400"></span><span><strong class="text-slate-700">Human Health Manager:</strong> On fall or missed check-in, a real person calls first — then dispatches emergency services if unanswered.</span></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-4 flex justify-end">
+          <div class="space-y-3 w-full max-w-xs">
+            <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="background:rgba(212,229,240,.3);border:1px solid rgba(123,158,184,.3)"><span class="w-3 h-3 rounded-full flex-shrink-0" style="background:var(--aura)"></span><span class="font-body text-base text-slate-700">Routine deviation · Voice check-in</span></div>
+            <div class="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3"><span class="w-3 h-3 rounded-full bg-amber-400 flex-shrink-0"></span><span class="font-body text-base text-slate-700">HR +15% over 48h · GP slot booked</span></div>
+            <div class="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span class="w-3 h-3 rounded-full bg-red-400 flex-shrink-0"></span><span class="font-body text-base text-slate-700">Fall detected · Health Manager alerted</span></div>
+            <div class="flex items-center gap-3 bg-sage-50 border border-sage-200 rounded-xl px-4 py-3"><span class="w-3 h-3 rounded-full bg-sage-400 flex-shrink-0"></span><span class="font-body text-base text-slate-700">Meds confirmed ✓ Vitals normal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="fade-up mt-20">
+      <h3 class="font-display text-3xl font-semibold text-slate-850 text-center mb-8">Old vs. New</h3>
+      <div class="bg-white/70 border border-sage-200 rounded-3xl overflow-hidden">
+        <table class="w-full font-body text-base">
+          <thead>
+            <tr style="background:var(--aura-light)">
+              <th class="text-left px-8 py-4 text-slate-700 font-semibold">Feature</th>
+              <th class="text-center px-6 py-4 text-slate-500 font-semibold">Smart Mirror <span class="font-normal text-sm">(Old)</span></th>
+              <th class="text-center px-6 py-4 font-semibold" style="color:var(--aura-dark)">AuraHome <span class="font-normal text-sm">(Now)</span></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-sage-100">
+            <tr><td class="px-8 py-4 text-slate-700 font-medium">Coverage</td><td class="text-center px-6 py-4 compare-no">Only in front of mirror</td><td class="text-center px-6 py-4 compare-yes">Whole-home mmWave Radar</td></tr>
+            <tr style="background:rgba(250,248,243,.6)"><td class="px-8 py-4 text-slate-700 font-medium">Privacy</td><td class="text-center px-6 py-4 compare-no">Camera-based · Intrusive</td><td class="text-center px-6 py-4 compare-yes">Radar-only · Privacy-first</td></tr>
+            <tr><td class="px-8 py-4 text-slate-700 font-medium">Senior Effort</td><td class="text-center px-6 py-4 compare-no">High · Must stand at mirror</td><td class="text-center px-6 py-4 compare-yes">Passive · Zero behaviour change</td></tr>
+            <tr style="background:rgba(250,248,243,.6)"><td class="px-8 py-4 text-slate-700 font-medium">Emergency Response</td><td class="text-center px-6 py-4 compare-no">Alert only · No follow-up</td><td class="text-center px-6 py-4 compare-yes">Human Health Manager dispatches</td></tr>
+            <tr><td class="px-8 py-4 text-slate-700 font-medium">Connectivity Failure</td><td class="text-center px-6 py-4 compare-no">Wi-Fi dependent · Goes dark</td><td class="text-center px-6 py-4 compare-yes">4G/5G eSIM + 24h battery</td></tr>
+            <tr style="background:rgba(250,248,243,.6)"><td class="px-8 py-4 text-slate-700 font-medium">Who Pays</td><td class="text-center px-6 py-4 compare-no">Senior (high upfront cost)</td><td class="text-center px-6 py-4 compare-yes">Insurer subscription model</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AI Features -->
+    <div class="fade-up mt-16 grid md:grid-cols-3 gap-6">
+      <div class="feature-card rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-aura-light flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" style="color:var(--aura-dark)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h4 class="font-display text-xl font-semibold text-slate-850 mb-2">Daily Routine Baseline</h4>
+        <p class="font-body text-base text-slate-600 leading-relaxed">AI maps the senior's "Normal" — then flags deviations before they become emergencies.</p>
+      </div>
+      <div class="feature-card rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-gold-deep" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        </div>
+        <h4 class="font-display text-xl font-semibold text-slate-850 mb-2">AI-Mediated Telehealth</h4>
+        <p class="font-body text-base text-slate-600 leading-relaxed">Persistent irregularities auto-schedule a GP slot, pre-loaded with 48 hours of vital trend data.</p>
+      </div>
+      <div class="feature-card rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-sage-100 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-sage-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+        </div>
+        <h4 class="font-display text-xl font-semibold text-slate-850 mb-2">Cognitive Load Reduction</h4>
+        <p class="font-body text-base text-slate-600 leading-relaxed">Plain language always: "Your ticker looks strong" not "Tachycardia detected." Pill recognition confirms the right medication at the right time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR CTA -->
+<section id="contact" class="section cta-bg py-28 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="fade-up">
+      <p class="font-display italic text-aura text-xl mb-4">Seed Round · Now Open</p>
+      <h2 class="font-display text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6">
+        Own a piece of the<br/><em class="text-gold">future of ageing.</em>
+      </h2>
+      <p class="font-body text-xl text-sage-200 max-w-xl mx-auto leading-relaxed mb-12">
+        We are raising <strong class="text-white">$3M</strong> to manufacture our first 10,000 AuraHome ecosystems and expand across India, Southeast Asia, and the UK — backed by insurance partnerships at launch. Minimum ticket: $100K.
+      </p>
+      <a href="mailto:invest@aurahome.health?subject=Investment%20Inquiry%20%E2%80%94%20AuraHome" class="btn-gold inline-flex items-center gap-3 px-10 py-5 rounded-full text-lg">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        Contact for Investment
+      </a>
+      <p class="font-body text-sage-400 text-base mt-6">Or write to us: <a href="mailto:invest@aurahome.health" class="text-sage-300 underline underline-offset-4 hover:text-white transition-colors">invest@aurahome.health</a></p>
+    </div>
+    <div class="fade-up mt-20 grid md:grid-cols-3 gap-8 text-left" style="transition-delay:.15s">
+      <div class="border border-white/10 rounded-2xl p-7">
+        <p class="font-display text-gold text-3xl font-bold mb-2">Market</p>
+        <p class="font-body text-sage-200 text-lg leading-relaxed">$2.1T global senior care market by 2030. Smart home health hardware growing at 19% CAGR — with zero radar-based ambient health incumbents.</p>
+      </div>
+      <div class="border border-white/10 rounded-2xl p-7">
+        <p class="font-display text-gold text-3xl font-bold mb-2">Moat</p>
+        <p class="font-body text-sage-200 text-lg leading-relaxed">Proprietary mmWave health models, routine-deviation AI, and a human-in-the-loop care layer. 3 patents pending. Insurer co-payment lock-in from day one.</p>
+      </div>
+      <div class="border border-white/10 rounded-2xl p-7">
+        <p class="font-display text-gold text-3xl font-bold mb-2">Exit</p>
+        <p class="font-body text-sage-200 text-lg leading-relaxed">Strategic M&amp;A interest from global insurers and hospital networks. Comparable exits: Current Health (Best Buy, $400M), Withings (Nokia, $192M).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="section py-10 px-6 text-center" style="background:#1a2433">
+  <p class="font-display text-2xl text-white mb-1">Aura<span style="color:var(--aura)">Home</span><span class="text-gold">.</span></p>
+  <p class="font-body text-sage-400 text-base">© 2025 AuraHome Technologies Pvt. Ltd. · Bengaluru, India</p>
+  <p class="font-body text-sage-400 text-sm mt-1">#AuraHome · #ActiveAging · #SmartHomeHealth · #PreventiveCare · #IndependentLiving · #HealthTech</p>
+  <p class="font-body text-sage-500 text-sm mt-3 max-w-xl mx-auto">This page contains forward-looking statements and market projections from third-party sources (WHO, WEF, CDC, AARP, NEJM, JMIR). Investment involves risk.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
